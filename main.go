@@ -1,25 +1,37 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
-	Greet()
-	PersonalGreeting("Andrey")
-	MultipleGreeting("Andrey", "Maxim")
-	FioGreeting("Pupkin", "Andrey", "Maximovich")
-}
 
-// Тут я буду жеска объявлять функции
+	sumFunc := func(x, y int) int {
+		return x + y
+	}
+	subFunc := func(x, y int) int {
+		return x - y
+	}
+	multFunc := func(x, y int) int {
+		return x * y
+	}
+	divFunc := func(x, y int) int {
+		return x / y
+	}
 
-func Greet() {
-	fmt.Println("Hello, World!")
-}
-func PersonalGreeting(name string) {
-	fmt.Printf("Hello, %s!\n", name)
-}
-func MultipleGreeting(name1, name2 string) {
-	fmt.Printf("Hello, %s and %s. Have a nice day, guys.\n", name1, name2)
-}
-func FioGreeting(fname, name, patronim string) {
-	fmt.Printf("My full name is %s %s %s.\n", fname, name, patronim)
+	calc := func(x, y int, operation func(x, y int) int) int {
+		return operation(x, y)
+	}
+
+	fmt.Println(calc(3, 7, sumFunc))
+	fmt.Println(calc(3, 7, subFunc))
+	fmt.Println(calc(3, 7, multFunc))
+	fmt.Println(calc(3, 7, divFunc))
+
+	message := "I love strings"
+	splittedstring := strings.Split(message, " ")
+	fmt.Println(splittedstring[0])
+	fmt.Println(splittedstring[1])
+	fmt.Println(splittedstring[2])
 }
