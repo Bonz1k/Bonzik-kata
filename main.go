@@ -66,7 +66,6 @@ func main() {
 		return x / y
 	}
 
-	//создал сканнер, который читает строку, читаю строку сканнером, присваиваю прочитанную строку переменной readExpression
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		fmt.Println("Введите выражение в виде (a [оператор: +, -, * или /] b): ")
@@ -94,31 +93,39 @@ func main() {
 				fmt.Println("Ошибка! Используются одновременно разные системы счисления.")
 				break
 			}
+
 			if isFirstNumArab == true && isSecondNumArab == true {
 				firstNum, _ := strconv.ParseInt(s[0], 10, 64)
 				secondNum, _ := strconv.ParseInt(s[2], 10, 64)
+
 				if s[1] == "+" {
 					fmt.Println(sumFunc(firstNum, secondNum))
 					break
 				}
+
 				if s[1] == "-" {
 					fmt.Println(subFunc(firstNum, secondNum))
 					break
 				}
+
 				if s[1] == "/" {
 					fmt.Println(divFunc(firstNum, secondNum))
 					break
 				}
+
 				if s[1] == "*" {
 					fmt.Println(multFunc(firstNum, secondNum))
 					break
 				}
 				break
 			}
+
 			if isFirstNumRoma == true && isSecondNumRoma == true {
 				var arabRes int64
+
 				if s[1] == "+" {
 					arabRes = sumFunc(romToArabicDic[s[0]], romToArabicDic[s[2]])
+
 					if arabRes == 100 {
 						fmt.Println(arabToRomaDic[arabRes])
 						break
@@ -127,9 +134,12 @@ func main() {
 						break
 					}
 				}
+
 				if s[1] == "-" {
 					arabRes = subFunc(romToArabicDic[s[0]], romToArabicDic[s[2]])
+
 					if arabRes > 0 {
+
 						if arabRes == 100 {
 							fmt.Println(arabToRomaDic[arabRes])
 							break
@@ -138,6 +148,7 @@ func main() {
 							break
 						}
 					}
+
 					if arabRes == 0 {
 						fmt.Println("Ошибка! В римской системе нет нуля.")
 						break
@@ -146,12 +157,15 @@ func main() {
 						break
 					}
 				}
+
 				if s[1] == "/" {
 					arabRes = divFunc(romToArabicDic[s[0]], romToArabicDic[s[2]])
+
 					if arabRes == 0 {
 						fmt.Println("Ошибка! В римской системе нет нуля.")
 						break
 					} else {
+
 						if arabRes == 100 {
 							fmt.Println(arabToRomaDic[arabRes])
 							break
@@ -161,8 +175,10 @@ func main() {
 						}
 					}
 				}
+
 				if s[1] == "*" {
 					arabRes = multFunc(romToArabicDic[s[0]], romToArabicDic[s[2]])
+
 					if arabRes == 100 {
 						fmt.Println(arabToRomaDic[arabRes])
 						break
