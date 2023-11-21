@@ -8,6 +8,7 @@ import (
 	"strings"
 )
 
+// A programmer friend of mine told me my crippled calculator was beautiful
 var romToArabicDic = map[string]int64{
 	"I":    1,
 	"II":   2,
