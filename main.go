@@ -88,9 +88,16 @@ func main() {
 			isSecondNumArab := strings.Contains(arabRef, s[2])
 			isFirstNumRoma := strings.Contains(romaRef, s[0])
 			isSecondNumRoma := strings.Contains(romaRef, s[2])
+			fN, ferr := strconv.ParseInt(s[0], 10, 64)
+			sN, serr := strconv.ParseInt(s[2], 10, 64)
 
 			if (isFirstNumArab == true && isSecondNumRoma == true) || (isFirstNumRoma == true && isSecondNumArab == true) {
 				fmt.Println("Ошибка! Используются одновременно разные системы счисления.")
+				break
+			}
+
+			if (ferr == nil && serr == nil) && ((fN < 1 || fN > 10) || (sN < 1 || sN > 10)) {
+				fmt.Println("Я запрещаю тебе вводить в программу операнды х <= 0 и/или x > 10")
 				break
 			}
 
